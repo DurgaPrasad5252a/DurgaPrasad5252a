@@ -1,0 +1,145 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+    <style></style>
+  </head>
+  <body>
+    <form>
+      <div class="container">
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr />
+        <label for="email"><b>Full Name</b></label>
+        <input
+          type="text"
+          placeholder="Enter Email"
+          name="email"
+          id="fullname_id"
+          required
+        />
+
+        <label for="email"><b>Email</b></label>
+        <input
+          type="text"
+          placeholder="Enter Email"
+          name="email"
+          id="email_id"
+          required
+        /><br />
+        <label for="mobile"><b>Mobile Number</b></label>
+        <input
+          type="text"
+          placeholder="Mobile Number"
+          name="mobile"
+          id="mobile_id"
+          required
+        /><br />
+
+        
+         <label for="">Enter your gender:</label><br />
+        <input type="radio" id="gender_id" name="fav_language" placeholder="gender" value="male" /> 
+        <label for="male">male</label><br>
+        <input type="radio" id="gender_id" name="fav_language" placeholder="gender" value="female" /> 
+        <label for="female">female</label><br>
+        
+         
+        <br />
+
+        <label for="country">Country</label>
+        <select id="country_id" name="country">
+          <option value="India">India</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option></select
+        ><br />
+
+        <label for="user"><b>Username</b></label>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          name="username"
+          id="username_id"
+          required
+        />
+        <br />
+
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="psw"
+          id="pass_id"
+          required
+        />
+
+        <hr />
+<!-- 
+        <button type="submit" class="registerbtn">
+          <a href="login.html">Register</a>
+        </button> -->
+        <!-- on register click below -->
+        <!-- <button onclick="onRegisterClick()" >Reg</button>
+      </div> -->
+
+      <!-- <div class="container signin">
+        <p>Already have an account? <a href="hai.html">Sign in</a></p>
+      </div> -->
+      <img src="closed-eye.png" onclick="showHidePassword()" class="pass-eye" ></img>
+
+
+      <button onclick="onRegisterClick()" class="login-button">Register</button>
+
+      
+      <div class="container signin">
+        <p>Already have an account? <a href="login.html">Sign in</a></p>
+      </div>
+
+      <script>
+        const showHidePassword = () => {
+          const passElement = document.getElementById("pass_id");
+          if (passElement.type === "text") {
+            passElement.type = "password";
+          } else {
+            passElement.type = "text";
+          }
+        };
+
+        const onRegisterClick = async () => {
+          const fullnameElement = document.getElementById("fullname_id");
+          const emailElement = document.getElementById("email_id");
+          const mobilenumberElement = document.getElementById("mobile_id");
+          const genderElement = document.getElementById("gender_id");
+          const countryElement = document.getElementById("country_id");
+          const usernameElement = document.getElementById("username_id");
+          const passElement = document.getElementById("pass_id");
+
+          var obj = {
+            fullname: fullnameElement.value,
+            email: emailElement.value,
+            mobilenumber: mobilenumberElement.value,
+            gender: genderElement.value,
+            country: countryElement.value,
+            username: usernameElement.value,
+            password: passElement.value,
+          };
+
+          console.log(obj);
+          var url = "http://localhost:4000/api/register";
+          var response = await fetch(url, {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            }, 
+
+            body: JSON.stringify(obj),
+          });
+          response = await response.json();
+          console.log(response);
+          
+          window.location.href = "login.html";
+        };
+      </script>
+    </form>
+  </body>
+</html>
