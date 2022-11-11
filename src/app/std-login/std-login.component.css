@@ -1,0 +1,14 @@
+.form-control {
+  background-color: azure;
+}
+.container {
+  background-color: azure;
+  width: 60%;
+}
+.std {
+  background-color: azure;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1%;
+  padding-top: 1%;
+}

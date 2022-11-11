@@ -1,0 +1,33 @@
+<div class="std"><h3>Student Marks Details</h3></div>
+<div class="container">
+  <nav class="navbar">
+    <input
+      class="form-control"
+      type="text"
+      name="FullName"
+      [(ngModel)]="FullName"
+      placeholder="Enter FirstName"
+    />
+  </nav>
+  <button type="submit" (click)="Search()">Search</button>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Student id</th>
+        <th>Name</th>
+        <th>Marks</th>
+      </tr>
+    </thead>
+    <tbody
+      *ngFor="
+        let detail of details | paginate: { itemsPerPage: 4, currentPage: p }
+      "
+    >
+      <td>{{ detail.id }}</td>
+      <td>{{ detail.FullName }}</td>
+      <td>{{ detail.ObtainedMarks }}</td>
+    </tbody>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </table>
+</div>
