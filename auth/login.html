@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, intial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+          </div>
+
+    <div class="card-container">
+      <div class="login-card">
+        
+        <div class="row-1">
+          <div>
+            <p class="row-1-text-1">Welcome to Proclink!</p>
+          </div>
+          <div>
+            <p class="row-1-text-2">
+              account not created<br />
+              <span class="row-1-text-3"></span> <a href="register.html">Register here</a></span>
+            </p>
+          </div>
+        </div>
+      
+        <p class="row-2">SignIn</p>
+        <p id="error_id"></p>
+      
+
+        <div class="input-row">
+          <label class="input-row-label"
+            >Enter your username or email </label
+          ><br />
+          <input id="username_id"
+            placeholder="Username address"
+            class="input-row-input" required
+          />
+        </div>
+
+        
+        <div class="input-row">
+          <label class="input-row-label">Enter your Password</label><br />
+          <input id="pass_id"
+            type="password"
+            placeholder="Enter your Password"
+            class="input-row-input" required
+          />
+          <img src="closed-eye.png" onclick="showHidepassword()" class="pass-eye" ></img>
+          <span
+            style="
+              display: flex;
+              justify-content: flex-end;
+              margin-top: 5px;
+              color: #ad3113;
+            "
+            >Forgot Password</span>
+        </div>
+
+        
+        <button  onclick="onLoginClick()" class="login-button">login</button>
+       
+      </div>
+    </div>
+
+    <script>
+      const showHidePassword = () => {
+        const passElement = document.getElementById("pass_id");
+        if(passElement.type === "text"){
+            passElement.type = "password"
+        }else{
+          passElement.type = "text"
+        }
+      }
+
+      const onLoginClick = async() => {
+        const passElement = document.getElementById("pass_id");
+        
+        const usernameElement = document.getElementById("username_id");
+
+        var obj = {
+          username:usernameElement.value,
+          password:passElement.value,
+      
+        }
+
+
+        console.log(obj);
+         var url ="http://localhost:4005/api/login";
+         var response = await fetch(url , {
+          method:"POST",
+          headers:{
+            Accept:"application/json",
+            "Content-Type":"application/json",
+          },         
+          body:JSON.stringify(obj)
+         });
+         response = await response.json();
+         var error=document.getElementById("error_id");
+         if(response.status===false){
+          error.innerText=response.msg;
+          error.style.color="red"
+         }
+         else{
+          error.innerText=""
+          localStorage.setItem("token", response.token)
+          localStorage.setItem("userData", JSON.stringify(response.data))
+          window.location.href="profile.html"
+         }
+      }
+      
+     </script>
+  </body>
+</html>

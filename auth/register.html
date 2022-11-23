@@ -1,0 +1,176 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, intial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>
+  </head>
+  <body>
+    <div class="main-container">
+    </div>
+
+    <div class="card-container">
+      <div class="login-card">
+        
+        <div class="row-1">
+          <div>
+            <p class="row-1-text-1">Welcome to Proclink!</p>
+          </div>
+          <div>
+            <p class="row-1-text-2">
+              Have account ?<br />
+              <span class="row-1-text-3"></span> <a href="signin.html">Login</a></span>
+            </p>
+          </div>
+        </div>
+        
+        <p class="row-2">RegisterNow</p>
+      
+
+        
+
+        <div class="input-row">
+          <label class="input-row-label"
+            >Email Address </label
+          ><br />
+          <input id = "email_id"
+            placeholder="email address"
+            class="input-row-input"
+          />
+        </div>
+
+        
+        <div class="input-row">
+          <label class="input-row-label"
+            >Enter Fullname </label
+          ><br />
+          <input id = "name_id"
+            placeholder="full name"
+            class="input-row-input"
+          />
+        </div>
+
+        <!-- <div class="input-row">
+          <label class="input-row-label">age</label
+          ><br />
+          <input id = "age_id"
+            placeholder="age"
+            class="input-row-input"
+          />
+        </div> -->
+
+        <div class="input-row">
+          <label class="input-row-label">country</label
+          ><br />
+          <input id = "country_id"
+            placeholder="country"
+            class="input-row-input"
+          />
+        </div>
+
+        <div class="input-row">
+          <label class="input-row-label">gender </label
+          ><br />
+          <input id = "Gender_id"
+            placeholder="Gender"
+            class="input-row-input"
+          />
+        </div>
+
+        <div class="input-row">
+          <label class="input-row-label">phone number</label
+          ><br />
+          <input id = "phone_id"
+            placeholder="phone number"
+            class="input-row-input"
+          />
+        </div>
+
+
+        <div class="input-row">
+          <label class="input-row-label">Enter your username </label
+          ><br />
+          <input id = "username_id"
+            placeholder="username"
+            class="input-row-input"
+          />
+        </div>
+
+
+        <div class="input-row">
+          <label class="input-row-label">Enter your Password</label><br />
+          <input id = "pass_id"
+            type="password"
+            placeholder="Enter your Password"
+            class="input-row-input"
+          />
+          <img src="closed-eye.png" onclick="showHidePassword()" class="pass-eye" ></img>
+          <!-- <span
+            style="
+              display: flex;
+              justify-content: flex-end;
+              margin-top: 5px;
+              color: #ad3113;
+            "
+            >Forgot Password</span
+          > -->
+        </div>
+
+        
+        <button onclick = "onRegisterClick()" class="login-button">Register</button>
+       
+      </div>
+    </div>
+     <script>
+      const showHidePassword = () => {
+        const passElement = document.getElementById("pass_id");
+        if(passElement.type === "text"){
+            passElement.type = "password"
+        }else{
+          passElement.type = "text"
+        }
+      }
+
+      const onRegisterClick = async () => {
+        const emailElement = document.getElementById("email_id");
+        const nameElement = document.getElementById("name_id");
+       // const ageElement = document.getElementById("age_id");
+        const countryElement = document.getElementById("country_id");
+        const genderElement = document.getElementById("Gender_id");
+        const phoneElement= document.getElementById("phone_id");
+        const usernameElement = document.getElementById("username_id");
+        const passElement = document.getElementById("pass_id");
+
+        var obj = {
+          email:emailElement.value,
+          fullname:nameElement.value,
+          //age:ageElement.value,
+          country:countryElement.value,
+          gender:genderElement.value,
+          phone:phoneElement.value,
+          username:usernameElement.value,
+          password:passElement.value
+        }
+
+        console.log(obj);
+         var url ="http://localhost:4005/api/register";
+         var response = await fetch(url , 
+         {
+          
+          method:"POST",
+          headers:{
+            Accept:"application/json",
+            "Content-Type":"application/json",
+          },//"mode" : "no-cors",
+          
+          body:JSON.stringify(obj),
+         });
+         response = await response.json();
+         console.log(response);
+         window.location.href = "signin.html";
+      }
+      
+     </script>
+  </body>
+</html>
