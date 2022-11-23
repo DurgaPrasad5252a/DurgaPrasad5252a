@@ -1,0 +1,74 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "FullName": "Avinash",
+      "ObtainedMarks": 88
+    },
+    {
+      "id": 2,
+      "FullName": "Raju",
+      "ObtainedMarks": 85
+    },
+    {
+      "id": 3,
+      "FullName": "Prasad",
+      "ObtainedMarks": 75
+    },
+    {
+      "id": 4,
+      "FullName": "Vijay",
+      "ObtainedMarks": 63
+    },
+    {
+      "id": 5,
+      "FullName": "Basha",
+      "ObtainedMarks": 93
+    },
+    {
+      "id": 6,
+      "FullName": "Affrudhin",
+      "ObtainedMarks": 73
+    },
+    {
+      "id": 7,
+      "FullName": "Krishna",
+      "ObtainedMarks": 69
+    },
+    {
+      "id": 8,
+      "FullName": "Mohan",
+      "ObtainedMarks": 73
+    },
+    {
+      "id": 9,
+      "FullName": "Satya",
+      "ObtainedMarks": 79
+    },
+    {
+      "id": 10,
+      "FullName": "Ashok",
+      "ObtainedMarks": 85
+    },
+    {
+      "id": 11,
+      "FullName": "Kavya",
+      "ObtainedMarks": 89
+    },
+    {
+      "id": 12,
+      "FullName": "Renu",
+      "ObtainedMarks": 98
+    },
+    {
+      "id": 13,
+      "FullName": "Syama",
+      "ObtainedMarks": 99
+    },
+    {
+      "id": 14,
+      "FullName": "Prassu",
+      "ObtainedMarks": 100
+    }
+  ]
+}
