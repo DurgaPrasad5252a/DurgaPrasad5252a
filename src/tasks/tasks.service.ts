@@ -4,9 +4,23 @@ import { Task, TaskStatus } from './task';
 import { v4 as uuid } from 'uuid';
 import { CreateTaskDto } from './dto/create-task';
 import { GetTasksFilter } from './dto/get-tasks-filter';
+
+import { InjectModel } from '@nestjs/mongoose/dist';
+import { Model } from 'mongoose';
+import { isWeakMap } from 'util/types';
 @Injectable()
 export class TasksService {
+  constructor(@InjectModel('Task') private readonly taskModel: Model<Task>) {}
   private tasks: Task[] = [];
+  async insertTask(title: string, description: string, status: TaskStatus) {
+    const newTask = new this.taskModel({
+      title,
+      description,
+      status,
+    });
+    const result = await newTask.save();
+    return result.id;
+  }
 
   getAllTasks() {
     return this.tasks;
